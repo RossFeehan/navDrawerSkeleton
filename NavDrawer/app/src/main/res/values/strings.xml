@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">NavDrawer</string>
     <string name="toolbarName">Nav Drawer Skeleton</string>
+    <string name="naveDrawName">Ross Feehan</string>
+    <string name="openDrawer">Open Nav Drawer</string>
+    <string name="closeDrawer">Close Nav Drawer</string>
 </resources>

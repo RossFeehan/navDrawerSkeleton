@@ -4,7 +4,7 @@
     android:id="@+id/navDrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="7dp">
+    android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +14,8 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:background="@color/mainColor"/>
 
@@ -24,7 +25,8 @@
         android:id="@+id/navDrawerRV"
         android:layout_width="320dp"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
+        android:layout_gravity="left|start"
+        android:fitsSystemWindows="true"
         android:background="#ffffff"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>

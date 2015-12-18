@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         navDrawerRV.setLayoutManager(new LinearLayoutManager(ctx));
         navDrawerRV.setAdapter(new NavDrawRecyclerAdapter(ctx));
 
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, navDrawer,R.string.openDrawer, R.string.closeDrawer){
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, navDrawer, toolbar, R.string.openDrawer, R.string.closeDrawer){
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 // Code here will execute once drawer is closed
             }
         };
-        navDrawer.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        navDrawer.setDrawerListener(drawerToggle);
+
     }
 }

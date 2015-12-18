@@ -2,6 +2,7 @@ package com.ross.feehan.navdrawer;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.toolbarName));
 
-        //set the adapter and layout manager of the recycler view
+        //set the layout manager of the recycler view
         navDrawerRV.setLayoutManager(new LinearLayoutManager(ctx));
-        navDrawerRV.setAdapter(new NavDrawRecyclerAdapter(ctx));
+        //set the adapter of the nav draw which handles the clicks of the menu items and closing the nav drawer
+        navDrawerRV.setAdapter(new NavDrawRecyclerAdapter(ctx, navDrawer));
 
+        //set the ActionBarDrawerToggle that lets the toolbar and nav drawer work togther
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, navDrawer, toolbar, R.string.openDrawer, R.string.closeDrawer){
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -51,5 +54,9 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.setDrawerIndicatorEnabled(true);
         navDrawer.setDrawerListener(drawerToggle);
 
+        //set the first fragment
+        FragmentTransaction fragTransact = getSupportFragmentManager().beginTransaction();
+        fragTransact.replace(R.id.fragmentArea, new Fragment1());
+        fragTransact.commit();
     }
 }

@@ -2,6 +2,10 @@ package com.ross.feehan.navdrawer;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +29,11 @@ public class NavDrawRecyclerAdapter extends RecyclerView.Adapter<NavDrawRecycler
     private List<String> menuItems;
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
+    private static DrawerLayout navDrawer;
 
-    public NavDrawRecyclerAdapter(Context ctx){
+    public NavDrawRecyclerAdapter(Context ctx, DrawerLayout navDrawer){
         this.ctx = ctx;
+        this.navDrawer = navDrawer;
         this.menuItems = Arrays.asList(ctx.getResources().getStringArray(R.array.menuItems));
     }
 
@@ -104,9 +110,38 @@ public class NavDrawRecyclerAdapter extends RecyclerView.Adapter<NavDrawRecycler
             itemView.setOnClickListener(this);
         }
 
+        //handle the clicks on the menu items
         @Override
         public void onClick(View v) {
-           Toast.makeText(ctx, "Clicked Menu Item " + String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+            Fragment frag = null;
+            switch(getAdapterPosition()){
+                case 0:
+                    frag = new ProfileFragment();
+                    break;
+                case 1:
+                    frag = new Fragment1();
+                    break;
+                case 2:
+                    frag = new Fragment2();
+                    break;
+                case 3:
+                    frag = new Fragment3();
+                    break;
+                case 4:
+                    frag = new Fragment4();
+                    break;
+                case 5:
+                    frag = new Fragment5();
+                    break;
+                case 6:
+                    frag = new Fragment6();
+                    break;
+            }
+
+            FragmentTransaction fragTransact = ((AppCompatActivity)ctx).getSupportFragmentManager().beginTransaction();
+            fragTransact.replace(R.id.fragmentArea, frag);
+            fragTransact.commit();
+            navDrawer.closeDrawers();
         }
     }
 }

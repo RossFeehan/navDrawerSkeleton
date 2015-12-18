@@ -19,6 +19,12 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:background="@color/mainColor"/>
 
+        <FrameLayout
+            android:id="@+id/fragmentArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
